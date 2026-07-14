@@ -1,0 +1,12 @@
+# Ignore the Python virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Ingore PyCharm internal settings
+.idea/
+
+# Ignore the automatic Python cache
+**/__pycache__/
+*.pyc
