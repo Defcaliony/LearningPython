@@ -7,7 +7,7 @@ attempts = 0  #initial number of attempts
 
 print("I'm thinking of a number betwen 1 and 100")   #last com
 
-while user_number != secret_number:
+while user_number != secret_number:                    #cucle<
     user_number = int(input("Enter your number: "))
     attempts += 1  #add 1 to attempts
 
@@ -16,6 +16,6 @@ while user_number != secret_number:
     elif user_number > secret_number:
         print("Too high")
     else:
-        print("Not enough!")
+        print("Not enough!")                           #>cucle
 
 print("You have used", attempts, "attempts")
