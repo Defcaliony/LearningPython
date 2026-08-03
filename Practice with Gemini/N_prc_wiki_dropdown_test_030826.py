@@ -10,7 +10,7 @@ def run_wiki_dropdown():
         page.goto("https://wikipedia.org")
 
         search_field = page.get_by_role("searchbox")
-        search_field.press_sequentially("Playwrig", delay=200) #search_field.fill("Playwright")
+        search_field.press_sequentially("Pyth", delay=200) #search_field.fill("Playwright")
 
         #search_field.press("ArrowDown") #don't work because click first link witch don't needed
         #search_field.press("Enter")
@@ -18,17 +18,21 @@ def run_wiki_dropdown():
         #suggestion = page.locator(".cdx-menu-item, .suggestion-link").first
         #suggestion.click()
 
-        #last test - dropdown_item = page.locator("a.suggestion-link").filter(has_text="Playwright")  #find helpful this word
-        #last test - dropdown_item.click()
+        dropdown_item = page.locator("a.suggestion-link, cdx-menu-item").filter(has_text="Python").first  #find helpful this word
+        dropdown_item.wait_for(state="visible")
+        dropdown_item.click()
 
-        suggestion = page.locator(".suggestion-link, .cdx-menu-item").all_text_contents()
+        #suggestion = page.locator(".suggestion-link, .cdx-menu-item").all_text_contents()
 
-        #last test -heading = page.get_by_role("heading", level=1)   #remind
-        #last test - assert "Playwright" in heading.text_content()
+        heading = page.get_by_role("heading", level=1)   #remind
+        print(f"\n Title open page: '{heading.text_content()}' ")
 
-        print("\n What is really appeared in the dropdown list ")
-        for index, item in enumerate(suggestion, 1):
-            print(f"{index}. {item.strip()}")
+        assert "Python" in heading.text_content()
+        print("Successful take Python with Title open page")
+
+        #print("\n What is really appeared in the dropdown list ")
+        #for index, item in enumerate(suggestion, 1):
+        #    print(f"{index}. {item.strip()}")
         #page.screenshot(path="wiki_python.png")
 
         browser.close()
