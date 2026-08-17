@@ -10,6 +10,9 @@ cart = [{"title": "Atomic Habits", "price": 450, "quantity": 2},
         {"title": "Competitive Advantage", "price": 600, "quantity": 2}
 ]
 
+with open("receipt.json", "w", encoding="utf-8") as f:
+    json.dump(cart, f, indent=4)
+
 def print_receipt(cart):
     if not cart:
         print("Cart is empty")
@@ -30,6 +33,9 @@ def print_receipt(cart):
     print(f"Total revenue: {total_sum} UAH")
 
     return total_sum
+
+with open("receipt.json", "r", encoding="utf-8") as f:  #open jsonfile
+    cart = json.load(f)
 
 receipt1 = print_receipt(cart) #review for 1st box
 
