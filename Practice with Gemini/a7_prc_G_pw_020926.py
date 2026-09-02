@@ -25,7 +25,7 @@ with sync_playwright() as p:
         if text:
             print(f"Text of element: {text.strip()}")
             count += 1
-            if count == 10:
+            if count == 20:
                 break
 
     browser.close()
