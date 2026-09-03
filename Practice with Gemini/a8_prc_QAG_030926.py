@@ -19,10 +19,21 @@ with sync_playwright() as p:
         wikimedia_link.click(button="middle")
 
     new_page = new_page_info.value
-
     new_page.wait_for_load_state()
 
-    print(f"Title old page: {page.title()}")
-    print(f"Title new tab: {new_page.title()}")
+    #print(f"Title old page: {page.title()}")
+    print(f"New page title: {new_page.title()}")
+
+
+    #search_input = new_page.get_by_placeholder("Пошук у Вікіпедії")
+    search_input = new_page.get_by_role("searchbox").first
+    search_input.fill("Свобода")
+    #search_input.press("Enter")
+    new_page.keyboard.press("Enter")
+
+    new_page.wait_for_load_state()
+    print(f"Title after search:{new_page.title()}")
+
+    print(f"The old page: {page.title()}")
 
     browser.close()
